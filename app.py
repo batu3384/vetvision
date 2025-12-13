@@ -46,7 +46,7 @@ except ImportError:
 # Gemini AI için
 try:
     import google.generativeai as genai
-    GEMINI_API_KEY = "AIzaSyBRo3w8rT-88xB2rOVXFPdN7la7YJLdIJM"
+    GEMINI_API_KEY = ""
     genai.configure(api_key=GEMINI_API_KEY)
     GEMINI_AVAILABLE = True
 except ImportError:
