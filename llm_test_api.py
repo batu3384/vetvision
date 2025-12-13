@@ -5,7 +5,7 @@
 import google.generativeai as genai
 
 # API Anahtarını buraya yapıştır
-API_KEY = "AIzaSyBRo3w8rT-88xB2rOVXFPdN7la7YJLdIJM"
+API_KEY = ""
 
 genai.configure(api_key=API_KEY)
 
