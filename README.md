@@ -1,45 +1,45 @@
-# VetVision - AI Destekli Veteriner Danismanlik Sistemi
+# VetVision - AI-Powered Veterinary Advisor
 
-Evcil hayvan sahipleri icin gelistirilmis, yapay zeka destekli veteriner danismanlik uygulamasi. Kopek fotograflarindan irk tespiti yapar ve Google Gemini ile saglik onerileri sunar.
+An AI-powered veterinary advisory application for pet owners. Detects dog breeds from photos using deep learning and provides health recommendations via Google Gemini.
 
-## Ozellikler
+## Features
 
-- Goruntu Siniflandirma: EfficientNetB0 tabanli derin ogrenme modeli ile kopek irki tespiti
-- - AI Danisman: Google Gemini API entegrasyonu ile irka ozel veteriner tavsiyeleri
-  - - PDF Raporlama: Analiz sonuclarini profesyonel PDF formatinda disa aktarma
-    - - Modern Arayuz: CustomTkinter ile sik masaustu uygulamasi
-     
-      - ## Teknolojiler
-     
-      - | Kategori | Teknoloji |
-      - |----------|----------|
-      - | Derin Ogrenme | TensorFlow, Keras, EfficientNetB0 |
-      - | LLM | Google Gemini API |
-      - | Arayuz | CustomTkinter |
-      - | Goruntu Isleme | OpenCV, Pillow |
-      - | Raporlama | ReportLab |
-      - | Veri | Pandas, NumPy |
-     
-      - ## Proje Yapisi
-     
-      - ```
-        vetvision/
-        |-- app.py              # Ana uygulama ve arayuz
-        |-- train_model.py      # Model egitim scripti
-        |-- llm_test_api.py     # Gemini API test modulu
-        |-- vetvision_model.h5  # Egitilmis model dosyasi
-        |-- confusion_matrix.png # Model basarim grafigi
-        ```
+- **Breed Detection:** EfficientNetB0-based deep learning model for dog breed classification
+- **AI Advisor:** Breed-specific veterinary recommendations powered by Google Gemini API
+- **PDF Reports:** Export analysis results as professional PDF documents
+- **Modern UI:** Sleek desktop application built with CustomTkinter
 
-        ## Kurulum
+## Tech Stack
 
-        ```bash
-        git clone https://github.com/batu3384/vetvision.git
-        cd vetvision
-        pip install tensorflow customtkinter google-generativeai reportlab opencv-python pillow pandas numpy
-        python app.py
-        ```
+| Category | Technology |
+|----------|-----------|
+| Deep Learning | TensorFlow, Keras, EfficientNetB0 |
+| LLM | Google Gemini API |
+| UI | CustomTkinter |
+| Image Processing | OpenCV, Pillow |
+| Reporting | ReportLab |
+| Data | Pandas, NumPy |
 
-        ## Lisans
+## Project Structure
 
-        MIT License
+```
+vetvision/
+├── app.py               # Main application & UI
+├── train_model.py       # Model training script
+├── llm_test_api.py      # Gemini API test module
+├── vetvision_model.h5   # Trained model file
+└── confusion_matrix.png # Model performance chart
+```
+
+## Getting Started
+
+```bash
+git clone https://github.com/batu3384/vetvision.git
+cd vetvision
+pip install tensorflow customtkinter google-generativeai reportlab opencv-python pillow pandas numpy
+python app.py
+```
+
+## License
+
+MIT License
