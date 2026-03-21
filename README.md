@@ -6,7 +6,7 @@
 
 ## 🚀 Key Features
 
-- **🐶 Breed Detection:** Identifies dog breeds from images with high accuracy using an **EfficientNetB0** based deep learning model.
+- **🐶 Breed Detection:** Identifies dog breeds from images with high accuracy using an **EfficientNetB3** based deep learning model.
 - **🩺 AI Veterinarian:** Integrates **Google Gemini API** to offer breed-specific health care tips, nutritional advice, and potential genetic risks.
 - **📄 Smart Reporting:** Generates professional **PDF health reports** summarizing the analysis results.
 - **💻 Modern UI:** Features a sleek, dark-themed desktop interface built with **CustomTkinter**.
