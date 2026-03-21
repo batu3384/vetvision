@@ -16,7 +16,7 @@
 | Component | Technology | Description |
 |-----------|------------|-------------|
 | **Core** | Python | Main programming language |
-| **Deep Learning** | TensorFlow / Keras | EfficientNetB0 model for image classification |
+| **Deep Learning** | TensorFlow / Keras | EfficientNetB3 model for image classification |
 | **LLM** | Google Gemini API | Generative AI for veterinary advice |
 | **GUI** | CustomTkinter | Modern UI framework for Python |
 | **Image Processing** | OpenCV & MRI | Image handling and preprocessing |
