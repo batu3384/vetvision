@@ -1,7 +1,7 @@
 # VetVision
 
 <p align="center">
-  <img src="docs/assets/hero.svg" alt="VetVision overview" width="100%">
+  <img src="docs/assets/showcase.png" alt="VetVision showcase assembled from report screens and evaluation artifacts" width="100%">
 </p>
 
 <p align="center">
@@ -14,7 +14,7 @@
 
 VetVision is a desktop AI assistant for dog breed recognition and breed-aware veterinary guidance. The public repository combines a `CustomTkinter` desktop application, an EfficientNet-based training script, local label assets, PDF export, and optional Gemini-powered report generation.
 
-This README is written against the current public codebase. Where the course report and the repository snapshot differ, the repository reality takes priority.
+The opening visual above is assembled from the original report screens and evaluation artifacts so the repository leads with the real product surfaces.
 
 ## What the application does
 
@@ -24,10 +24,6 @@ This README is written against the current public codebase. Where the course rep
 - Generates a veterinary-style text report with Gemini when an API key is available
 - Exports the current result set as a PDF document
 - Includes a training script for rebuilding the classification pipeline
-
-<p align="center">
-  <img src="docs/assets/pipeline.svg" alt="VetVision inference pipeline" width="100%">
-</p>
 
 ## Repository reality
 
@@ -39,8 +35,8 @@ This README is written against the current public codebase. Where the course rep
 
 - Course: `YBS 4015 Yapay Zeka`
 - Project title: `VetVision: Yapay Zeka Destekli Kopek Irki Analizi ve Veteriner Asistani`
+- Project window: `Oct 2025 - Dec 2025`
 - Team: `Batuhan Yuksel`, `Yusuf Yilmaz`, `Savas Asci`, `Ekin Celik`
-- Delivery year: `2025`
 
 ## Tech stack
 
