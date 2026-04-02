@@ -25,7 +25,9 @@ from sklearn.metrics import confusion_matrix, classification_report
 sns.set(style="darkgrid")
 
 # 2. Model ve veri yükleme
-MODEL_PATH = "vetvision_b3_model.keras" if os.path.exists("vetvision_b3_model.keras") else "vetvision_model.h5"
+MODEL_PATH = "vetvision_b3_model.keras" if os.path.exists("vetvision_b3_model.keras") else "artifacts/model/vetvision_model.h5"
+OUTPUT_MATRIX = "artifacts/evaluation/confusion_matrix.png"
+OUTPUT_REPORT = "artifacts/evaluation/report.txt"
 # Otomatik test dizini seçimi: tercih sırası
 candidate_dirs = [
     "dataset/organized/val",
@@ -110,13 +112,14 @@ plt.title("En Çok Karıştırılan 10 Irk - Karmaşıklık Matrisi")
 plt.xlabel("Tahmin Edilen")
 plt.ylabel("Gerçek")
 plt.tight_layout()
-plt.savefig("confusion_matrix.png")
+os.makedirs("artifacts/evaluation", exist_ok=True)
+plt.savefig(OUTPUT_MATRIX)
 plt.close()
 
 # 5. Classification Report
 report = classification_report(y_true, y_pred, target_names=class_names, zero_division=0)
 print(report)
-with open("report.txt", "w", encoding="utf-8") as f:
+with open(OUTPUT_REPORT, "w", encoding="utf-8") as f:
     f.write(report)
 
 print("Karmaşıklık matrisi ve rapor başarıyla oluşturuldu.")

@@ -1,63 +1,73 @@
-# Google Gemini API ile Veteriner Tavsiye Sistemi
-# Kurulum: pip install google-generativeai
-# Not: API anahtarını https://aistudio.google.com adresinden ücretsiz alabilirsiniz.
+"""Small Gemini smoke-test utility for VetVision."""
+
+from __future__ import annotations
 
 import os
+import sys
+
 import google.generativeai as genai
+from dotenv import load_dotenv
 
-# API Key - environment variable kullanin (hardcode etmeyin!)
-API_KEY = os.environ.get("GOOGLE_API_KEY", "")
+load_dotenv()
 
-genai.configure(api_key=API_KEY)
-
-# Model isimleri - sırayla denenecek
+API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY", "")
 MODEL_OPTIONS = [
-    'gemini-2.5-flash',
-    'gemini-2.0-flash',
-    'gemini-2.0-flash-lite',
-    'gemini-flash-latest'
+    "gemini-2.5-flash",
+    "gemini-2.0-flash",
+    "gemini-2.0-flash-lite",
+    "gemini-flash-latest",
 ]
 
 
-def list_available_models():
-    """Kullanılabilir modelleri listele."""
-    print("\n📋 Mevcut Modeller Şunlardır:")
-    print("-" * 50)
-    try:
-        for model in genai.list_models():
-            if 'generateContent' in model.supported_generation_methods:
-                print(f"  ✅ {model.name}")
-    except Exception as e:
-        print(f"  ❌ Model listesi alınamadı: {e}")
-    print("-" * 50)
-
-
 def get_working_model():
-    """Çalışan bir model bul."""
+    """Return the first available model that can generate content."""
+    if not API_KEY:
+        raise RuntimeError("GEMINI_API_KEY tanımlı değil.")
+
+    genai.configure(api_key=API_KEY)
+
     for model_name in MODEL_OPTIONS:
         try:
             model = genai.GenerativeModel(
                 model_name,
-                generation_config={'temperature': 0.3}
+                generation_config={"temperature": 0.3},
             )
-            # Test et
             model.generate_content("test")
             return model, model_name
         except Exception:
             continue
-    return None, None
+
+    raise RuntimeError("Kullanılabilir Gemini modeli bulunamadı.")
 
 
-def veteriner_tavsiyesi(irk_ismi: str) -> str:
-    """
-    Verilen köpek ırkı için Gemini API ile detaylı bilgi kartı üretir.
-    
-    Args:
-        irk_ismi: Köpek ırkının adı (örn: "Golden Retriever")
-    
-    Returns:
-        Markdown formatında veteriner bilgi kartı
-    """
+def build_prompt(breed_name: str) -> str:
+    return f"""
+Sen bir veteriner bilgi asistanısın.
+{breed_name} ırkı için kısa ve güvenli bir ön bilgi hazırla.
+
+Şu başlıkları kullan:
+1. Genel profil
+2. Dikkat edilmesi gereken sağlık noktaları
+3. Beslenme ve egzersiz notu
+4. Veterinere ne zaman başvurulmalı
+
+Yanıt kısa, açık ve Türkçe olsun.
+"""
+
+
+def main() -> int:
+    breed_name = sys.argv[1] if len(sys.argv) > 1 else "Golden Retriever"
+
     try:
         model, model_name = get_working_model()
-        
+        response = model.generate_content(build_prompt(breed_name))
+        print(f"Model: {model_name}\n")
+        print(response.text.strip())
+        return 0
+    except Exception as exc:
+        print(f"Gemini testi başarısız: {exc}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

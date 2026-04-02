@@ -25,9 +25,9 @@ IMG_SIZE = (224, 224)
 BATCH_SIZE = 32
 EPOCHS = 30
 LEARNING_RATE = 1e-4
-MODEL_PATH = "vetvision_model.h5"
-LABELS_PATH = "labels.txt"
-LABELS_CSV = Path("labels.csv")
+MODEL_PATH = "artifacts/model/vetvision_model.h5"
+LABELS_PATH = "artifacts/model/labels.txt"
+LABELS_CSV = Path("artifacts/dataset/labels.csv")
 SEED = 42
 
 # Dataset paths

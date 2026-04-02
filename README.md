@@ -29,14 +29,14 @@ The opening visual above is assembled from the original report screens and evalu
 
 - The current desktop app uses a clean light `CustomTkinter` interface.
 - The current training script is `EfficientNetB0`-based.
-- The repository keeps the trained model and several course-delivery artifacts checked in for reproducibility of the original submission.
+- Model, evaluation, and dataset artifacts are grouped under `artifacts/` so the source tree stays clearer without losing the original delivery assets.
 
 ## Academic context
 
 - Course: `YBS 4015 Yapay Zeka`
-- Project title: `VetVision: Yapay Zeka Destekli Kopek Irki Analizi ve Veteriner Asistani`
+- Project title: `VetVision: Yapay Zeka Destekli Köpek Irkı Analizi ve Veteriner Asistanı`
 - Project window: `Oct 2025 - Dec 2025`
-- Team: `Batuhan Yuksel`, `Yusuf Yilmaz`, `Savas Asci`, `Ekin Celik`
+- Team: `Batuhan Yüksel`, `Yusuf Yılmaz`, `Savaş Avcı`, `Ekin Çelik`
 
 ## Tech stack
 
@@ -47,6 +47,7 @@ The opening visual above is assembled from the original report screens and evalu
 | Report generation | Google Gemini API, ReportLab |
 | Training | TensorFlow Keras, pandas, matplotlib |
 | UX extras | tkinterdnd2 for drag-and-drop |
+| Environment | python-dotenv |
 
 ## Repository structure
 
@@ -55,12 +56,18 @@ The opening visual above is assembled from the original report screens and evalu
 |-- app.py
 |-- train_model.py
 |-- llm_test_api.py
+|-- create_charts.py
 |-- requirements.txt
-|-- vetvision_model.h5
-|-- labels.txt
-|-- labels.csv
-|-- confusion_matrix.png
-|-- report.txt
+|-- artifacts/
+|   |-- model/
+|   |   |-- vetvision_model.h5
+|   |   `-- labels.txt
+|   |-- dataset/
+|   |   |-- labels.csv
+|   |   `-- sample_submission.csv
+|   `-- evaluation/
+|       |-- confusion_matrix.png
+|       `-- report.txt
 `-- docs/assets/
 ```
 
@@ -83,10 +90,15 @@ The opening visual above is assembled from the original report screens and evalu
 
    ```bash
    cp .env.example .env
-   export GEMINI_API_KEY=\"your-key-here\"
    ```
 
-4. Launch the desktop application:
+4. Add your Gemini key to `.env` if you want AI-generated veterinary summaries:
+
+   ```bash
+   GEMINI_API_KEY=your-key-here
+   ```
+
+5. Launch the desktop application:
 
    ```bash
    python app.py
@@ -99,21 +111,21 @@ If `GEMINI_API_KEY` is not set, the app still works for local breed recognition 
 - `train_model.py` organizes the dataset into train and validation folders
 - the current script uses transfer learning with `EfficientNetB0`
 - augmentation is applied through `ImageDataGenerator`
-- the best model is saved as `vetvision_model.h5`
+- the best model is saved as `artifacts/model/vetvision_model.h5`
 
 ## Evaluation artifact
 
 The repository already includes the confusion matrix generated during the academic delivery:
 
 <p align="center">
-  <img src="confusion_matrix.png" alt="VetVision confusion matrix" width="82%">
+  <img src="artifacts/evaluation/confusion_matrix.png" alt="VetVision confusion matrix" width="82%">
 </p>
 
 ## Notes on scope
 
 - This repository is strongest as a course project handoff and desktop AI demo.
-- The public snapshot includes model artifacts directly in the repository because that matched the original delivery format.
-- A production packaging pass would normally separate heavy model assets and generated reports from the source tree.
+- The public snapshot still includes the original heavy model and evaluation artifacts, but they are grouped under `artifacts/` to reduce root-level clutter.
+- A production packaging pass would normally move the trained model to a release asset or model registry instead of versioning it in the source tree.
 
 ## License
 

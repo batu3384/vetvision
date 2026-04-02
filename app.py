@@ -12,6 +12,9 @@ import customtkinter as ctk
 from tkinter import filedialog, messagebox
 import numpy as np
 from PIL import Image
+from dotenv import load_dotenv
+
+load_dotenv()
 
 try:
     from ctypes import windll
@@ -56,8 +59,8 @@ except ImportError:
 
 preprocess_input = tf.keras.applications.efficientnet.preprocess_input
 
-MODEL_PATH = Path("vetvision_model.h5")
-LABELS_PATH = Path("labels.txt")
+MODEL_PATH = Path("artifacts/model/vetvision_model.h5")
+LABELS_PATH = Path("artifacts/model/labels.txt")
 IMG_SIZE = (224, 224)
 
 # ═══════════════════════════════════════════════════════════════════════════════

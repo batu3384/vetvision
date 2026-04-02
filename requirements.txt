@@ -7,3 +7,5 @@ pandas
 customtkinter
 tkinterdnd2
 reportlab
+python-dotenv
+seaborn
