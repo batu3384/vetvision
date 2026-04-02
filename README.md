@@ -1,64 +1,124 @@
-# 🐾 VetVision - AI-Powered Veterinary Advisor
+# VetVision
 
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue) ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange) ![Gemini API](https://img.shields.io/badge/AI-Google%20Gemini-4285F4) ![License](https://img.shields.io/badge/License-MIT-green)
+<p align="center">
+  <img src="docs/assets/hero.svg" alt="VetVision overview" width="100%">
+</p>
 
-**VetVision** is an intelligent veterinary advisory system designed to assist pet owners. By leveraging deep learning for breed classification and Large Language Models (LLMs) for medical advice, it provides comprehensive health insights for dogs.
+<p align="center">
+  <img alt="Python" src="https://img.shields.io/badge/Python-Desktop%20App-0F172A?style=flat-square&logo=python&logoColor=white">
+  <img alt="TensorFlow" src="https://img.shields.io/badge/Model-TensorFlow-2563EB?style=flat-square&logo=tensorflow&logoColor=white">
+  <img alt="Interface" src="https://img.shields.io/badge/UI-CustomTkinter-14B8A6?style=flat-square">
+  <img alt="AI" src="https://img.shields.io/badge/AI-Gemini%20Optional-0EA5E9?style=flat-square">
+  <img alt="Course" src="https://img.shields.io/badge/Course-YBS%204015-6B7280?style=flat-square">
+</p>
 
-## 🚀 Key Features
+VetVision is a desktop AI assistant for dog breed recognition and breed-aware veterinary guidance. The public repository combines a `CustomTkinter` desktop application, an EfficientNet-based training script, local label assets, PDF export, and optional Gemini-powered report generation.
 
-- **🐶 Breed Detection:** Identifies dog breeds from images with high accuracy using an **EfficientNetB3** based deep learning model.
-- **🩺 AI Veterinarian:** Integrates **Google Gemini API** to offer breed-specific health care tips, nutritional advice, and potential genetic risks.
-- **📄 Smart Reporting:** Generates professional **PDF health reports** summarizing the analysis results.
-- **💻 Modern UI:** Features a sleek, dark-themed desktop interface built with **CustomTkinter**.
+This README is written against the current public codebase. Where the course report and the repository snapshot differ, the repository reality takes priority.
 
-## 🛠️ Technology Stack
+## What the application does
 
-| Component | Technology | Description |
-|-----------|------------|-------------|
-| **Core** | Python | Main programming language |
-| **Deep Learning** | TensorFlow / Keras | EfficientNetB3 model for image classification |
-| **LLM** | Google Gemini API | Generative AI for veterinary advice |
-| **GUI** | CustomTkinter | Modern UI framework for Python |
-| **Image Processing** | OpenCV & MRI | Image handling and preprocessing |
-| **Reporting** | ReportLab | PDF generation engine |
+- Loads a dog image from disk with file picker support and optional drag-and-drop
+- Produces the top breed predictions from the trained model
+- Shows the primary breed label and confidence score in the desktop UI
+- Generates a veterinary-style text report with Gemini when an API key is available
+- Exports the current result set as a PDF document
+- Includes a training script for rebuilding the classification pipeline
 
-## 📂 Project Structure
+<p align="center">
+  <img src="docs/assets/pipeline.svg" alt="VetVision inference pipeline" width="100%">
+</p>
 
-```bash
-vetvision/
-├── app.py               # Main application entry point & UI logic
-├── train_model.py       # Script for training the breed classification model
-├── llm_test_api.py      # Utility to test Gemini API integration
-├── vetvision_model.h5   # Pre-trained deep learning model
-├── confusion_matrix.png # Model performance visualization
-├── labels.txt           # List of supported dog breeds
-└── requirements.txt     # Python dependencies
+## Repository reality
+
+- The current desktop app uses a clean light `CustomTkinter` interface.
+- The current training script is `EfficientNetB0`-based.
+- The repository keeps the trained model and several course-delivery artifacts checked in for reproducibility of the original submission.
+
+## Academic context
+
+- Course: `YBS 4015 Yapay Zeka`
+- Project title: `VetVision: Yapay Zeka Destekli Kopek Irki Analizi ve Veteriner Asistani`
+- Team: `Batuhan Yuksel`, `Yusuf Yilmaz`, `Savas Asci`, `Ekin Celik`
+- Delivery year: `2025`
+
+## Tech stack
+
+| Area | Tools |
+| --- | --- |
+| Desktop app | Python, CustomTkinter, Pillow |
+| Inference | TensorFlow, NumPy |
+| Report generation | Google Gemini API, ReportLab |
+| Training | TensorFlow Keras, pandas, matplotlib |
+| UX extras | tkinterdnd2 for drag-and-drop |
+
+## Repository structure
+
+```text
+.
+|-- app.py
+|-- train_model.py
+|-- llm_test_api.py
+|-- requirements.txt
+|-- vetvision_model.h5
+|-- labels.txt
+|-- labels.csv
+|-- confusion_matrix.png
+|-- report.txt
+`-- docs/assets/
 ```
 
-## ⚡ Getting Started
+## Running locally
 
-### Prerequisites
-- Python 3.8 or higher
-- A Google Cloud API Key for Gemini
+1. Create a virtual environment:
 
-### Installation
-
-1. **Clone the repository**
    ```bash
-   git clone https://github.com/batu3384/vetvision.git
-   cd vetvision
+   python3 -m venv .venv
+   source .venv/bin/activate
    ```
 
-2. **Install dependencies**
+2. Install the dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
-   *(If requirements.txt is missing, install manually: `pip install tensorflow customtkinter google-generativeai reportlab opencv-python pillow pandas numpy`)*
 
-3. **Run the application**
+3. Create an environment file if you want Gemini-backed report generation:
+
+   ```bash
+   cp .env.example .env
+   export GEMINI_API_KEY=\"your-key-here\"
+   ```
+
+4. Launch the desktop application:
+
    ```bash
    python app.py
    ```
 
-## 📜 License
-This project is licensed under the MIT License.
+If `GEMINI_API_KEY` is not set, the app still works for local breed recognition and PDF export, but the LLM-backed veterinary narrative remains disabled.
+
+## Training pipeline
+
+- `train_model.py` organizes the dataset into train and validation folders
+- the current script uses transfer learning with `EfficientNetB0`
+- augmentation is applied through `ImageDataGenerator`
+- the best model is saved as `vetvision_model.h5`
+
+## Evaluation artifact
+
+The repository already includes the confusion matrix generated during the academic delivery:
+
+<p align="center">
+  <img src="confusion_matrix.png" alt="VetVision confusion matrix" width="82%">
+</p>
+
+## Notes on scope
+
+- This repository is strongest as a course project handoff and desktop AI demo.
+- The public snapshot includes model artifacts directly in the repository because that matched the original delivery format.
+- A production packaging pass would normally separate heavy model assets and generated reports from the source tree.
+
+## License
+
+Released under the [MIT License](LICENSE).

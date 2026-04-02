@@ -46,11 +46,13 @@ except ImportError:
 # Gemini AI için
 try:
     import google.generativeai as genai
-    GEMINI_API_KEY = ""
-    genai.configure(api_key=GEMINI_API_KEY)
-    GEMINI_AVAILABLE = True
+    GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
+    GEMINI_AVAILABLE = bool(GEMINI_API_KEY)
+    if GEMINI_AVAILABLE:
+        genai.configure(api_key=GEMINI_API_KEY)
 except ImportError:
     GEMINI_AVAILABLE = False
+    GEMINI_API_KEY = ""
 
 preprocess_input = tf.keras.applications.efficientnet.preprocess_input
 

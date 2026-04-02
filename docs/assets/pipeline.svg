@@ -1,0 +1,47 @@
+<svg width="1200" height="700" viewBox="0 0 1200 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="700" rx="32" fill="#F4FBFC"/>
+  <rect x="56" y="56" width="1088" height="588" rx="26" fill="#FFFFFF" stroke="#D9EBED"/>
+  <text x="84" y="108" fill="#07131B" font-size="30" font-weight="700" font-family="Georgia, 'Times New Roman', serif">VetVision inference pipeline</text>
+  <text x="84" y="140" fill="#49626B" font-size="18" font-family="Arial, Helvetica, sans-serif">The public repository supports an end-to-end local desktop flow with optional cloud text generation.</text>
+
+  <rect x="84" y="198" width="220" height="154" rx="24" fill="#ECFEFF" stroke="#AFE8EF"/>
+  <text x="114" y="236" fill="#0F766E" font-size="17" font-weight="700" font-family="Arial, Helvetica, sans-serif">Input</text>
+  <text x="114" y="274" fill="#07131B" font-size="28" font-weight="700" font-family="Georgia, 'Times New Roman', serif">Dog image</text>
+  <text x="114" y="306" fill="#49626B" font-size="18" font-family="Arial, Helvetica, sans-serif">File picker</text>
+  <text x="114" y="332" fill="#49626B" font-size="18" font-family="Arial, Helvetica, sans-serif">Drag and drop when</text>
+  <text x="114" y="356" fill="#49626B" font-size="18" font-family="Arial, Helvetica, sans-serif">the dependency is present</text>
+
+  <rect x="404" y="198" width="240" height="154" rx="24" fill="#0D2330"/>
+  <text x="434" y="236" fill="#67E8F9" font-size="17" font-weight="700" font-family="Arial, Helvetica, sans-serif">Model stage</text>
+  <text x="434" y="274" fill="#F0FBFF" font-size="28" font-weight="700" font-family="Georgia, 'Times New Roman', serif">TensorFlow model</text>
+  <text x="434" y="306" fill="#CCE7EE" font-size="18" font-family="Arial, Helvetica, sans-serif">Image preprocessing</text>
+  <text x="434" y="332" fill="#CCE7EE" font-size="18" font-family="Arial, Helvetica, sans-serif">Top predictions</text>
+  <text x="434" y="356" fill="#CCE7EE" font-size="18" font-family="Arial, Helvetica, sans-serif">Confidence scores</text>
+
+  <rect x="744" y="198" width="168" height="154" rx="24" fill="#ECFEFF" stroke="#AFE8EF"/>
+  <text x="772" y="236" fill="#0F766E" font-size="17" font-weight="700" font-family="Arial, Helvetica, sans-serif">Desktop UI</text>
+  <text x="772" y="274" fill="#07131B" font-size="28" font-weight="700" font-family="Georgia, 'Times New Roman', serif">Results</text>
+  <text x="772" y="306" fill="#49626B" font-size="18" font-family="Arial, Helvetica, sans-serif">Main breed</text>
+  <text x="772" y="332" fill="#49626B" font-size="18" font-family="Arial, Helvetica, sans-serif">Other candidates</text>
+  <text x="772" y="356" fill="#49626B" font-size="18" font-family="Arial, Helvetica, sans-serif">Status updates</text>
+
+  <rect x="972" y="198" width="144" height="154" rx="24" fill="#ECFEFF" stroke="#AFE8EF"/>
+  <text x="998" y="236" fill="#0F766E" font-size="17" font-weight="700" font-family="Arial, Helvetica, sans-serif">Outputs</text>
+  <text x="998" y="274" fill="#07131B" font-size="28" font-weight="700" font-family="Georgia, 'Times New Roman', serif">PDF</text>
+  <text x="998" y="306" fill="#49626B" font-size="18" font-family="Arial, Helvetica, sans-serif">Local export</text>
+  <text x="998" y="332" fill="#49626B" font-size="18" font-family="Arial, Helvetica, sans-serif">Saved report</text>
+
+  <path d="M304 274H384" stroke="#0EA5E9" stroke-width="5" stroke-linecap="round"/>
+  <path d="M644 274H724" stroke="#0EA5E9" stroke-width="5" stroke-linecap="round"/>
+  <path d="M912 274H952" stroke="#0EA5E9" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="344" cy="274" r="9" fill="#0EA5E9"/>
+  <circle cx="684" cy="274" r="9" fill="#0EA5E9"/>
+  <circle cx="932" cy="274" r="9" fill="#0EA5E9"/>
+
+  <rect x="286" y="430" width="628" height="140" rx="26" fill="#F9FEFE" stroke="#D9EBED"/>
+  <text x="318" y="470" fill="#07131B" font-size="22" font-weight="700" font-family="Arial, Helvetica, sans-serif">Optional report generation lane</text>
+  <text x="318" y="507" fill="#49626B" font-size="19" font-family="Arial, Helvetica, sans-serif">If `GEMINI_API_KEY` is configured, the detected breed label is inserted into a veterinary-style prompt and a</text>
+  <text x="318" y="537" fill="#49626B" font-size="19" font-family="Arial, Helvetica, sans-serif">contextual text report is generated. Without the key, the local inference flow still remains fully usable.</text>
+
+  <text x="84" y="620" fill="#678089" font-size="16" font-family="Arial, Helvetica, sans-serif">Repository note: the public snapshot includes heavy model artifacts because the original course submission was delivered as a self-contained package.</text>
+</svg>
